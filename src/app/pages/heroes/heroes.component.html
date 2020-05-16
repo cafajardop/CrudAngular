@@ -11,7 +11,8 @@
     </div>
 </div>
 
-<table class="table mt-3 animate__hinge">
+<table  *ngIf="!cargando && heroes.length > 0"
+        class="table mt-3 animate__hinge">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
@@ -22,17 +23,30 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+        <tr *ngFor="let heroe of heroes; let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{ heroe.nombre}}</td>
+            <td>{{ heroe.poder}}</td>
+            <td>
+                <label *ngIf="heroe.vivo" class="badge badge-success">Vivo</label>
+                <label *ngIf="!heroe.vivo" class="badge badge-danger">Muerto</label>
+            </td>
+            <td>
+                <button class="btn btn-info mr-1"
+                        [routerLink]="['/heroe',heroe.id]">
+                    <i class="fa fa-pen"></i>
+                </button>
+                <button class="btn btn-danger mr-1"
+                        (click)="borrarHeroe(heroe,i)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
         </tr>
     </tbody>
 </table>
 
-<div class="alert alert-info text-center mt-5">
+<div *ngIf="cargando"
+    class="alert alert-info text-center mt-5 animated fadeIn faster">
     <h4 class="alert-heading">Cargando</h4>
     <p>
         <i class="fa fa-sync-alt fa-spin fa-2x"></i>
@@ -42,7 +56,8 @@
     </p>
 </div>
 
-<div class="alert alert-warning text-center mt-5">
+<div *ngIf="!cargando && heroes.length ===0" 
+    class="alert alert-warning text-center mt-5 animated fadeIn faster">
     <h4 class="alert-heading">No hay registros</h4>
     <p>
         <i class="fa fa-exclamation fa-2x"></i>
