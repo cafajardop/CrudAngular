@@ -1,5 +1,16 @@
 # CrudHeroes
 
+| Funcionalidades |
+| ------------- |
+|    Uso del modulo HTTP.|
+|    Utilizaremos los servicios restful de Firebase|
+|    POST.|
+|    GET.|
+|    DELETE.|
+|    PUT.|
+|    Configuraciones en la consola de Firebase.|
+|    Entre otras cosas útiles.|
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
 
 ## Development server
