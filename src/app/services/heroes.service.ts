@@ -26,6 +26,7 @@ export class HeroesService {
   }
 
   actualizarHeroe (heroe: HeroeModel){
+    
     const heroeTemp = {
       //spray operator que significa traer todos los campos del usuario
       ...heroe

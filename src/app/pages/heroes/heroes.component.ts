@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroesService } from 'src/app/services/heroes.service';
+import { HeroesService } from 'src/app/services/heroes.service'; 
 import { HeroeModel } from 'src/app/models/heroe.model';
 import Swal from 'sweetalert2';
 
@@ -28,7 +28,7 @@ export class HeroesComponent implements OnInit {
   borrarHeroe(heroe: HeroeModel, i : number){
     Swal.fire({
       title:'¿Está seguro?',
-      text: `Está seguro que desea borar a ${ heroe.nombre}`,
+      text: `Está seguro que desea borrar a ${ heroe.nombre}`,
       icon: 'question',
       showConfirmButton: true,
       showCancelButton: true
