@@ -1,4 +1,6 @@
-<h1>Héroe <small>Nombre del Héroe</small></h1>
+<!-- Si existe el heroe muestre el mensaje si no muestre nombre del heroe -->
+<h1 *ngIf="heroe.nombre">Héroe <small>{{heroe.nombre}}</small></h1>
+<h1 *ngIf="!heroe.nombre">Héroe <small>Nombre del Héroe</small></h1>
 <hr>
 
 
@@ -31,7 +33,7 @@
                         class="form-control"
                         [(ngModel)] = "heroe.nombre"
                         name="nombre"
-                        placeholder="Nombre del Héroe" 
+                        placeholder="Nombre del Héroe"  
                         required>
             </div>
             <div class="form-group">
@@ -56,7 +58,7 @@
                         (click)="heroe.vivo = true"
                         class="btn btn-outline-danger w-50" type="button">
                     <i class="fa fa-dizzy"></i>
-                    Vivo
+                    Muerto
                 </button>
             </div>
             <hr>

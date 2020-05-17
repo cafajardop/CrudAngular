@@ -13,9 +13,12 @@ export class HeroesService {
   constructor(private http: HttpClient) { }
 
   crearHeroe (heroe: HeroeModel){
-    return this.http.post(`${ this.url}/heroes.json`, heroe)
+    return this.http.post(`${ this.url }/heroes.json`, heroe)
       .pipe(
         map((resp: any)  => {
+             console.log(`${resp.name} esta es la respuesta de map crear heroe` )
+             console.log(`${resp} esta es la respuesta de map crear heroe` )
+             //el resp.name es el id que retorna firebase pero se llama asi resp.name
             heroe.id = resp.name;
             return heroe;
         })
@@ -24,9 +27,10 @@ export class HeroesService {
 
   actualizarHeroe (heroe: HeroeModel){
     const heroeTemp = {
+      //spray operator que significa traer todos los campos del usuario
       ...heroe
     }
-    
+    // Borro el Id para que no cause conflicto
     delete heroeTemp.id;
 
     return this.http.put(`${this.url}/heroes/${ heroe.id }.json`, heroeTemp)
@@ -52,11 +56,12 @@ export class HeroesService {
       
     const heroes: HeroeModel[] = [];
 
-    console.log(heoresObj);
+    console.log(`${heoresObj} + este es el arreglo` );
 
     if (heoresObj === null){return[];}
 
     Object.keys (heoresObj).forEach(key =>{
+      console.log(`${key} + este es el key` );
       const heroe: HeroeModel = heoresObj[key];
       heroe.id = key;
       heroes.push(heroe);
